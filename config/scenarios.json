@@ -1,0 +1,115 @@
+{
+  "version": "1.0.0",
+  "scenarios": [
+    {
+      "id": "build_blocks",
+      "name": "加入搭积木",
+      "goal": "学会在接受或拒绝同伴邀请时，说出清楚、礼貌、符合场景的完整表达。",
+      "image": "images/scene_build_blocks.png",
+      "target_sentences": [
+        "好啊，我想和你们一起玩积木。",
+        "谢谢，不用了，我想先自己玩一会儿。"
+      ],
+      "rounds": [
+        {
+          "round": 1,
+          "ai_question": "你要不要过来和我们一起玩积木呀？",
+          "intent": "express_accept_or_refuse",
+          "target_sentence": "好啊，我想和你们一起玩积木。",
+          "word_blocks": ["我", "想", "和你们", "一起玩积木"],
+          "acceptable": [
+            "我想一起玩。",
+            "我可以加入吗？",
+            "我不想玩，谢谢。",
+            "我想自己玩一会儿。"
+          ],
+          "keywords": ["一起玩", "加入", "和你们", "不想", "自己玩", "不用", "可以吗"],
+          "parent_tip": "等孩子说完，不用替孩子回答。"
+        },
+        {
+          "round": 2,
+          "ai_question": "你想搭房子、城堡，还是小车？",
+          "intent": "express_preference",
+          "target_sentence": "我想搭一个城堡。",
+          "word_blocks": ["我", "想搭", "一个", "城堡"],
+          "acceptable": ["我想搭房子。", "我想搭小车。"],
+          "keywords": ["房子", "城堡", "小车", "搭"],
+          "parent_tip": "孩子说出任意一种就可以，不必纠正用词。"
+        },
+        {
+          "round": 3,
+          "ai_question": "我们已经说清楚想做什么了，你真棒。你还想再说一次吗？",
+          "intent": "choose_repeat_or_finish",
+          "target_sentence": "我想再来一次。",
+          "word_blocks": ["我", "想", "再来一次"],
+          "acceptable": ["不想了，谢谢。", "我想再来一次。"],
+          "keywords": ["再来一次", "想", "不用", "谢谢", "结束"],
+          "parent_tip": "孩子选择结束同样有效，不要勉强重复。"
+        }
+      ],
+      "task_card": {
+        "name": "在游戏中练习加入邀请",
+        "scene": "在家或熟悉活动中，成人邀请孩子加入一项活动。",
+        "steps": [
+          "家长问：你想不想一起玩？",
+          "等待 5 秒，不替孩子回答。",
+          "孩子说出接受或拒绝的完整句，家长按实际支持程度记录。"
+        ],
+        "observation": "是否能在一次提示内表达清楚；是否能在真实活动中主动使用。"
+      }
+    },
+    {
+      "id": "outdoor_needs",
+      "name": "户外休息与需求表达",
+      "goal": "学会在活动过程中识别自身需求，并在合适时机用完整句表达。",
+      "image": "images/scene_outdoor_needs.png",
+      "target_sentences": [
+        "我想喝水。",
+        "我想休息一下。",
+        "我想去厕所。"
+      ],
+      "rounds": [
+        {
+          "round": 1,
+          "ai_question": "我们玩了好久了。你是想喝水，还是想休息一下？",
+          "intent": "express_need",
+          "target_sentence": "我想喝水。",
+          "word_blocks": ["我", "想", "喝水", "休息"],
+          "acceptable": ["我想休息。", "我想去厕所。"],
+          "keywords": ["喝水", "休息", "厕所", "上厕所"],
+          "parent_tip": "一次只展示必要的两到三个选项。"
+        },
+        {
+          "round": 2,
+          "ai_question": "好的，你能说完整一点吗？请告诉我想做什么。",
+          "intent": "express_complete_need",
+          "target_sentence": "我想喝水。",
+          "word_blocks": ["我", "想", "喝", "水"],
+          "acceptable": ["我想休息一下。", "我想去厕所。"],
+          "keywords": ["我想", "喝水", "休息", "厕所"],
+          "parent_tip": "只说出关键词时，提示“请说完整”即可。"
+        },
+        {
+          "round": 3,
+          "ai_question": "你说得很清楚，我们现在就去。你能再说一遍吗？",
+          "intent": "confirm_need",
+          "target_sentence": "我想休息一下。",
+          "word_blocks": ["我", "想", "休息一下"],
+          "acceptable": ["我想喝水。", "我想去厕所。"],
+          "keywords": ["想", "喝水", "休息", "厕所"],
+          "parent_tip": "孩子完成表达后立即响应，强化“说了有用”。"
+        }
+      ],
+      "task_card": {
+        "name": "户外活动中的需求表达",
+        "scene": "真实户外活动或家庭活动中的自然需求时刻。",
+        "steps": [
+          "家长先等待孩子主动表达。",
+          "若孩子只说出关键词，家长提示“请说完整”。",
+          "孩子完成表达后立即响应，强化“说了有用”。"
+        ],
+        "observation": "是否出现主动性表达；是否需要关键词提示；是否能在不同场景中迁移。"
+      }
+    }
+  ]
+}
