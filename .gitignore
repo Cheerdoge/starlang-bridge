@@ -1,0 +1,23 @@
+# 环境变量（含密钥，禁止入库）
+.env
+
+# 编译产物
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+starlang-bridge
+
+# 测试与覆盖率
+*.test
+*.out
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# 系统文件
+.DS_Store
+Thumbs.db
