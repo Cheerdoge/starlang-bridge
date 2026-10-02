@@ -1,0 +1,7 @@
+# DOMAIN 由 docker-compose 注入：
+#   填写域名 -> Caddy 自动申请并续期 HTTPS 证书
+#   留空     -> DOMAIN 取值 ":80"，仅提供 HTTP
+{$DOMAIN} {
+	encode gzip
+	reverse_proxy app:8080
+}

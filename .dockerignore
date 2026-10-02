@@ -1,0 +1,23 @@
+# 版本控制与文档
+.git
+.gitignore
+doc/
+*.md
+
+# 环境变量与密钥（禁止进入镜像）
+.env
+.env.prod
+.env.*.local
+
+# 测试脚本与本地产物
+scripts/
+*.exe
+*.test
+*.out
+*.log
+
+# IDE / 系统文件
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
