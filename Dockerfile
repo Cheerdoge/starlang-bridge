@@ -1,19 +1,16 @@
 # syntax=docker/dockerfile:1
 
 # ---------- 构建阶段 ----------
-# go.mod 要求 go 1.27.1；若基础镜像补丁版本较低，GOTOOLCHAIN=auto 会自动拉取对应工具链
-FROM golang:1.27 AS build
+FROM golang:1.27.1 AS build
 WORKDIR /src
 
-# 纯 Go 编译，产出静态二进制，运行阶段无需 libc
-ENV CGO_ENABLED=0 GOTOOLCHAIN=auto
+# 纯 Go 编译，产出静态二进制；GOTOOLCHAIN=local 禁止容器内再联网下载工具链
+ENV CGO_ENABLED=0 GOTOOLCHAIN=local
 
-# 先拷贝依赖清单，利用缓存加速重复构建
-COPY go.mod go.sum ./
-RUN go mod download
-
+# 使用 vendor 目录离线构建，构建期无需访问任何模块代理
 COPY . .
-RUN go build -trimpath -ldflags="-s -w" -o /out/starlang-bridge .
+RUN --mount=type=cache,target=/root/.cache/go-build \
+    go build -mod=vendor -trimpath -ldflags="-s -w" -o /out/starlang-bridge .
 
 # ---------- 运行阶段 ----------
 FROM alpine:3.20
